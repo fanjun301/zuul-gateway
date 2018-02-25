@@ -1,0 +1,24 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: zuul-gateway
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://peer1:8761/eureka,http://peer2:8762/eureka
+
+
+zuul:
+  ignored-services: '*'
+  routes:
+    server-demo: /server-demo/**
+    client-demo: /client-demo/**
+# http://localhost:8888/routes
+
+management:
+  security:
+    enabled: false
